@@ -3,10 +3,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- 页面标题 -->
       <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           极客工具箱
         </h1>
-        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
           网页端线刷工具、ADB信息获取等实用工具集合
         </p>
       </div>
@@ -124,7 +124,7 @@
                     'bg-red-500'
                   ]"
                 ></div>
-                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                <span class="text-sm font-medium text-gray-700">
                   {{ getConnectionStatusText() }}
                 </span>
               </div>
@@ -201,9 +201,9 @@
           <div class="p-6">
             <!-- 设备信息 -->
             <div v-if="deviceInfo" class="grid md:grid-cols-2 gap-6 mb-6">
-              <div v-for="(value, key) in deviceInfo" :key="key" class="bg-gray-50 dark:bg-gray-700 p-3 rounded">
-                <div class="text-sm text-gray-500 dark:text-gray-400 capitalize">{{ key }}</div>
-                <div class="text-sm font-medium text-gray-900 dark:text-white">{{ value }}</div>
+              <div v-for="(value, key) in deviceInfo" :key="key" class="bg-gray-50 p-3 rounded">
+                <div class="text-sm text-gray-500 capitalize">{{ key }}</div>
+                <div class="text-sm font-medium text-gray-900">{{ value }}</div>
               </div>
             </div>
 

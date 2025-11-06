@@ -23,20 +23,7 @@
   background-color: rgba(255, 215, 0, 0.1);
 }
 
-/* 深色模式下的导航链接样式 */
-.dark .nav-link {
-  color: #d1d5db;
-}
 
-.dark .nav-link:hover {
-  color: #FFD700;
-  background-color: rgba(255, 215, 0, 0.2);
-}
-
-.dark .nav-link.active {
-  color: #FFD700;
-  background-color: rgba(255, 215, 0, 0.2);
-}
 
 /* 确保所有包含图标和文本的元素不会换行 */
 .flex.items-center {

@@ -31,28 +31,28 @@
             </div>
             <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
               <ListMusic class="w-8 h-8 text-primary-500 mx-auto mb-2" />
-              <h3 class="font-semibold text-gray-900 dark:text-white">播放列表</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-300">自定义歌单管理</p>
+              <h3 class="font-semibold text-gray-900">播放列表</h3>
+              <p class="text-sm text-gray-600">自定义歌单管理</p>
             </div>
-            <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <div class="p-4 bg-gray-50 rounded-lg">
               <Search class="w-8 h-8 text-primary-500 mx-auto mb-2" />
-              <h3 class="font-semibold text-gray-900 dark:text-white">音乐搜索</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-300">快速查找想听的歌曲</p>
+              <h3 class="font-semibold text-gray-900">音乐搜索</h3>
+              <p class="text-sm text-gray-600">快速查找想听的歌曲</p>
             </div>
-            <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <div class="p-4 bg-gray-50 rounded-lg">
               <Heart class="w-8 h-8 text-primary-500 mx-auto mb-2" />
-              <h3 class="font-semibold text-gray-900 dark:text-white">收藏功能</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-300">标记喜欢的音乐</p>
+              <h3 class="font-semibold text-gray-900">收藏功能</h3>
+              <p class="text-sm text-gray-600">标记喜欢的音乐</p>
             </div>
           </div>
 
           <!-- 进度指示 -->
           <div class="mb-6">
-            <div class="flex justify-between text-sm text-gray-600 dark:text-gray-300 mb-2">
+            <div class="flex justify-between text-sm text-gray-600 mb-2">
               <span>开发进度</span>
               <span>25%</span>
             </div>
-            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+            <div class="w-full bg-gray-200 rounded-full h-2">
               <div class="bg-primary-500 h-2 rounded-full w-1/4"></div>
             </div>
           </div>

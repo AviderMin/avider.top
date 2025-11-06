@@ -60,7 +60,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { useThemeStore } from '@/stores/theme'
 import { 
   Home, 
   Smartphone, 
@@ -69,9 +68,6 @@ import {
   Wrench,
   Menu 
 } from 'lucide-vue-next'
-
-const themeStore = useThemeStore()
-const { isDark, toggleTheme } = themeStore
 
 const isMobileMenuOpen = ref(false)
 

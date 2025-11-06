@@ -3,10 +3,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- 页面标题 -->
       <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           电脑装机配置
         </h1>
-        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
           提供不同价位的装机配置推荐，支持性能、价格等多维度排序和筛选
         </p>
       </div>
@@ -21,7 +21,7 @@
             </label>
             <select 
               v-model="selectedPriceRange" 
-              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900"
             >
               <option value="all">全部</option>
               <option value="budget">入门级 (¥2000-4000)</option>
@@ -131,10 +131,10 @@
               <div v-for="component in config.components" :key="component.type" class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
                   <component :is="getComponentIcon(component.type)" class="w-5 h-5 text-primary-500" />
-                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ component.type }}</span>
+                  <span class="text-sm font-medium text-gray-700">{{ component.type }}</span>
                 </div>
                 <div class="text-right">
-                  <div class="text-sm font-medium text-gray-900 dark:text-white">{{ component.model }}</div>
+                  <div class="text-sm font-medium text-gray-900">{{ component.model }}</div>
                   <div class="text-xs text-gray-500">¥{{ component.price.toLocaleString() }}</div>
                 </div>
               </div>

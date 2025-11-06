@@ -1,13 +1,13 @@
 <template>
   <div class="min-h-screen">
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-primary-50 to-primary-100 dark:from-gray-900 dark:to-gray-800 py-20">
+    <section class="relative bg-gradient-to-br from-primary-50 to-primary-100 py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <h1 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             <span class="text-gradient">Avider.Top</span>
           </h1>
-          <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+          <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
             AviderMin的个人空间 - 分享安卓刷机、电脑装机、音乐与工具
           </p>
           <div class="flex flex-wrap justify-center gap-4">
@@ -29,7 +29,7 @@
     </section>
 
     <!-- GitHub README Section -->
-    <section class="py-20 bg-white dark:bg-gray-900">
+    <section class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="card-geek p-8">
           <div class="prose prose-lg max-w-none">
