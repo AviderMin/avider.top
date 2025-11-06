@@ -107,7 +107,7 @@
               <div 
                 v-for="(config, index) in rankings.intelCpu" 
                 :key="config.id"
-                class="flex items-center justify-between p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
+                class="flex items-center p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
               >
                 <div class="flex items-center space-x-3">
                   <div class="w-6 h-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
@@ -117,9 +117,6 @@
                     {{ config.model }}
                   </span>
                 </div>
-                <span class="text-sm text-blue-600 dark:text-blue-400 font-medium">
-                  ¥{{ config.price.toLocaleString() }}
-                </span>
               </div>
             </div>
           </div>
@@ -134,7 +131,7 @@
               <div 
                 v-for="(config, index) in rankings.amdCpu" 
                 :key="config.id"
-                class="flex items-center justify-between p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
+                class="flex items-center p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
               >
                 <div class="flex items-center space-x-3">
                   <div class="w-6 h-6 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
@@ -144,9 +141,6 @@
                     {{ config.model }}
                   </span>
                 </div>
-                <span class="text-sm text-red-600 dark:text-red-400 font-medium">
-                  ¥{{ config.price.toLocaleString() }}
-                </span>
               </div>
             </div>
           </div>
@@ -161,7 +155,7 @@
               <div 
                 v-for="(config, index) in rankings.nvidiaGpu" 
                 :key="config.id"
-                class="flex items-center justify-between p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
+                class="flex items-center p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
               >
                 <div class="flex items-center space-x-3">
                   <div class="w-6 h-6 bg-gradient-to-r from-green-500 to-green-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
@@ -171,9 +165,6 @@
                     {{ config.model }}
                   </span>
                 </div>
-                <span class="text-sm text-green-600 dark:text-green-400 font-medium">
-                  ¥{{ config.price.toLocaleString() }}
-                </span>
               </div>
             </div>
           </div>
@@ -188,7 +179,7 @@
               <div 
                 v-for="(config, index) in rankings.amdGpu" 
                 :key="config.id"
-                class="flex items-center justify-between p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
+                class="flex items-center p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
               >
                 <div class="flex items-center space-x-3">
                   <div class="w-6 h-6 bg-gradient-to-r from-purple-500 to-purple-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
@@ -198,9 +189,6 @@
                     {{ config.model }}
                   </span>
                 </div>
-                <span class="text-sm text-purple-600 dark:text-purple-400 font-medium">
-                  ¥{{ config.price.toLocaleString() }}
-                </span>
               </div>
             </div>
           </div>
