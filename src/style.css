@@ -133,11 +133,25 @@ footer {
   justify-content: center;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  outline: none !important;
 }
 
 .btn-geek:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+}
+
+/* 为筛选按钮添加自定义焦点样式 */
+button[class*="px-4 py-2 rounded-lg"]:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3) !important;
+}
+
+/* 为筛选按钮添加hover效果，模仿导航栏 */
+button[class*="px-4 py-2 rounded-lg"]:hover {
+  color: #FFD700 !important;
+  background-color: rgba(255, 215, 0, 0.1) !important;
+  transform: translateY(-1px);
 }
 
 /* Hero区域优化 */

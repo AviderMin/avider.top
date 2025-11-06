@@ -21,7 +21,7 @@
             :class="[
             'px-4 py-2 rounded-lg font-medium transition-all duration-300',
             selectedDevice === device
-              ? 'text-[#FFD700] !important bg-[rgba(255,215,0,0.1)] border border-[#FFD700]/20' 
+              ? 'text-[#FFD700] bg-[rgba(255,215,0,0.1)]' 
               : 'bg-primary-100 text-primary-700 hover:bg-primary-200'
           ]"
           >
