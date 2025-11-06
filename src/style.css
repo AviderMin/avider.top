@@ -1,0 +1,320 @@
+@import "tailwindcss";
+
+/* 导航链接样式修复 - 确保图标和文本在同一行 */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #FFD700;
+  background-color: rgba(255, 215, 0, 0.1);
+}
+
+.nav-link.active {
+  color: #FFD700;
+  background-color: rgba(255, 215, 0, 0.1);
+}
+
+/* 深色模式下的导航链接样式 */
+.dark .nav-link {
+  color: #d1d5db;
+}
+
+.dark .nav-link:hover {
+  color: #FFD700;
+  background-color: rgba(255, 215, 0, 0.2);
+}
+
+.dark .nav-link.active {
+  color: #FFD700;
+  background-color: rgba(255, 215, 0, 0.2);
+}
+
+/* 确保所有包含图标和文本的元素不会换行 */
+.flex.items-center {
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* 按钮和链接中的图标和文本布局 */
+.btn-geek {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+/* 移动端菜单链接样式 */
+.md\:hidden .flex.items-center {
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* 移除背景图片，使用金色主题背景 */
+body {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  min-height: 100vh;
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* 主内容区域 - 优化布局和视觉层次 */
+.min-h-screen {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+/* 卡片组件 - 提升视觉层次 */
+.card-geek {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.card-geek:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* 头部导航栏 - 优化样式 */
+header {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 页脚 - 优化样式 */
+footer {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 字体颜色优化 - 确保足够的对比度 */
+.text-gray-900 {
+  color: #1a202c !important;
+}
+
+.text-gray-800 {
+  color: #2d3748 !important;
+}
+
+.text-gray-700 {
+  color: #4a5568 !important;
+}
+
+.text-gray-600 {
+  color: #718096 !important;
+}
+
+.text-gray-500 {
+  color: #a0aec0 !important;
+}
+
+.text-gray-400 {
+  color: #cbd5e0 !important;
+}
+
+.text-gray-300 {
+  color: #e2e8f0 !important;
+}
+
+/* 按钮样式优化 */
+.btn-geek {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #1a202c !important;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+.btn-geek:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+}
+
+/* Hero区域优化 */
+.bg-gradient-to-br.from-primary-50.to-primary-100 {
+  background: linear-gradient(135deg, #FFF9C4 0%, #FFECB3 100%) !important;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 链接样式优化 */
+.nav-link {
+  color: #4a5568 !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #FFD700 !important;
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  color: #FFD700 !important;
+  font-weight: 600;
+}
+
+/* README内容样式 */
+.readme-content {
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  color: #1a202c;
+}
+
+.readme-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1a202c;
+  text-align: center;
+  border-bottom: 3px solid #FFD700;
+  padding-bottom: 0.5rem;
+}
+
+.readme-content h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1.5rem 0;
+  color: #2d3748;
+  text-align: center;
+  border-bottom: 2px solid #FFD700;
+  padding-bottom: 0.5rem;
+}
+
+.readme-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  color: #4a5568;
+}
+
+.readme-content p {
+  margin-bottom: 1rem;
+  color: #4a5568;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* 统计图表网格布局 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stat-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-item img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* 活动图表 */
+.activity-graph {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.activity-graph img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* 徽章样式 */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+  margin: 1.5rem 0 2.5rem 0;
+}
+
+.badges img {
+  height: 30px !important;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.badges img:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 通用图片样式 */
+.readme-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .min-h-screen {
+    backdrop-filter: blur(10px);
+  }
+  
+  .card-geek {
+    border-radius: 12px;
+    margin: 8px;
+  }
+  
+  .btn-geek {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .markdown-body h1 {
+    font-size: 1.875rem;
+  }
+  
+  .markdown-body h2 {
+    font-size: 1.5rem;
+  }
+  
+  .markdown-body h3 {
+    font-size: 1.25rem;
+  }
+}
