@@ -42,7 +42,7 @@
           </div>
           
           <div class="mt-4 md:mt-0 text-sm text-gray-500">
-            © 2024 Avider.Top. 保留所有权利。
+            © 2025 Avider.Top. 保留所有权利。
           </div>
         </div>
       </div>

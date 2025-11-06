@@ -17,7 +17,7 @@
           <button
             v-for="device in deviceTypes"
             :key="device"
-            @click="selectedDevice = device"
+            @click="selectedDevice = device; handleDeviceTypeChange()"
             :class="[
             'px-4 py-2 rounded-lg font-medium transition-all duration-300',
             selectedDevice === device
@@ -28,6 +28,25 @@
             {{ device }}
           </button>
         </div>
+      </div>
+
+      <!-- 加载状态 -->
+      <div v-if="loading" class="text-center py-12">
+        <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500"></div>
+        <p class="mt-4 text-gray-500 dark:text-gray-400">正在加载设备数据...</p>
+      </div>
+
+      <!-- 错误状态 -->
+      <div v-else-if="error" class="text-center py-12">
+        <AlertTriangle class="w-16 h-16 text-red-500 mx-auto mb-4" />
+        <p class="text-red-600 dark:text-red-400 mb-2">加载失败</p>
+        <p class="text-gray-500 dark:text-gray-400">{{ error }}</p>
+        <button 
+          @click="fetchDevices()" 
+          class="mt-4 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
+        >
+          重试
+        </button>
       </div>
 
       <!-- 设备列表 -->
@@ -63,20 +82,24 @@
               <div
                 v-for="resource in device.resources"
                 :key="resource.type"
-                class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
+                @click="goToResourceDetail(device, resource)"
+                class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200 cursor-pointer group"
               >
                 <div class="flex items-center space-x-3">
                   <Download class="w-4 h-4 text-primary-500" />
-                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {{ resource.type }}
-                  </span>
+                  <div>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary-600">
+                      {{ resource.type }}
+                    </span>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      {{ resource.version }} • {{ resource.size }}
+                    </div>
+                  </div>
                 </div>
-                <button
-                  @click="downloadResource(device, resource)"
-                  class="text-xs bg-primary-500 text-white px-3 py-1 rounded hover:bg-primary-600 transition-colors duration-200"
-                >
-                  下载
-                </button>
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs text-gray-500 dark:text-gray-400">查看详情</span>
+                  <ArrowRight class="w-4 h-4 text-gray-400 group-hover:text-primary-500 transition-colors" />
+                </div>
               </div>
             </div>
 
@@ -112,14 +135,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { Smartphone, Download, AlertTriangle, Package, X } from 'lucide-vue-next'
+import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { Smartphone, Download, AlertTriangle, Package, X, ArrowRight } from 'lucide-vue-next'
+
+const router = useRouter()
 
 interface Resource {
   type: string
   url: string
   version?: string
   size?: string
+  description?: string
 }
 
 interface Device {
@@ -129,60 +156,109 @@ interface Device {
   description: string
   image: string
   resources: Resource[]
+  details?: {
+    processor: string
+    ram: string
+    storage: string
+    screen: string
+    battery: string
+  }
 }
 
 const selectedDevice = ref('全部')
+const devices = ref<Device[]>([])
+const deviceTypes = ref<string[]>([])
+const loading = ref(true)
+const error = ref<string | null>(null)
 
-const deviceTypes = ['全部', '手机', '平板']
+// API基础URL
+const API_BASE = 'http://localhost:3000/api'
 
-const devices: Device[] = [
-  {
-    id: 'redmi-note12-turbo',
-    name: '红米Note 12 Turbo',
-    type: '手机',
-    description: '高性能中端手机，支持多种自定义ROM',
-    image: '/devices/marble.png',
-    resources: [
-      { type: '内核', url: '#', version: 'v5.15', size: '15MB' },
-      { type: '橙狐Recovery', url: '#', version: 'v12.1', size: '25MB' },
-      { type: '刷机教程', url: '#', size: '2MB' },
-    ],
-  },
-  {
-    id: 'k40s',
-    name: 'Redmi K40S',
-    type: '手机',
-    description: '性价比旗舰，刷机资源丰富',
-    image: '/devices/munch.png',
-    resources: [
-      { type: '内核', url: '#', version: 'v5.10', size: '14MB' },
-      { type: '橙狐Recovery', url: '#', version: 'v11.9', size: '24MB' },
-    ],
-  },
-  {
-    id: 'mi-pad-5',
-    name: '小米平板5',
-    type: '平板',
-    description: '大屏娱乐平板，支持自定义系统',
-    image: '/devices/nabu.png',
-    resources: [
-      { type: '内核', url: '#', version: 'v5.4', size: '18MB' },
-      { type: '橙狐Recovery', url: '#', version: 'v12.0', size: '28MB' },
-    ],
-  },
-]
+// 获取设备数据
+const fetchDevices = async () => {
+  try {
+    loading.value = true
+    error.value = null
+    
+    const response = await fetch(`${API_BASE}/devices?type=${selectedDevice.value === '全部' ? '' : selectedDevice.value}`)
+    const result = await response.json()
+    
+    if (result.success) {
+      devices.value = result.data
+    } else {
+      throw new Error(result.error || '获取设备数据失败')
+    }
+  } catch (err) {
+    error.value = err instanceof Error ? err.message : '网络请求失败'
+    console.error('获取设备数据失败:', err)
+  } finally {
+    loading.value = false
+  }
+}
+
+// 获取设备类型
+const fetchDeviceTypes = async () => {
+  try {
+    const response = await fetch(`${API_BASE}/devices/types/list`)
+    const result = await response.json()
+    
+    if (result.success) {
+      deviceTypes.value = result.data
+    }
+  } catch (err) {
+    console.error('获取设备类型失败:', err)
+  }
+}
 
 const filteredDevices = computed(() => {
   if (selectedDevice.value === '全部') {
-    return devices
+    return devices.value
   }
-  return devices.filter((device) => device.type === selectedDevice.value)
+  return devices.value.filter((device) => device.type === selectedDevice.value)
 })
 
-const downloadResource = (device: Device, resource: Resource) => {
-  // 模拟下载操作
-  console.log(`下载 ${device.name} 的 ${resource.type}`)
-  // 实际应用中这里会处理下载逻辑
-  window.open(resource.url, '_blank')
+// 监听设备类型变化
+const handleDeviceTypeChange = () => {
+  fetchDevices()
 }
+
+const downloadResource = (device: Device, resource: Resource) => {
+  // 检查URL是否有效
+  if (!resource.url || resource.url === '#') {
+    console.log(`资源 ${resource.type} 暂无下载链接`)
+    alert(`抱歉，${resource.type} 资源暂时无法下载`)
+    return
+  }
+  
+  // 处理URL编码和特殊字符
+  try {
+    const decodedUrl = decodeURIComponent(resource.url)
+    console.log(`下载 ${device.name} 的 ${resource.type}`, decodedUrl)
+    
+    // 在新窗口打开下载链接
+    window.open(resource.url, '_blank', 'noopener,noreferrer')
+  } catch (error) {
+    console.error('URL处理错误:', error)
+    // 如果解码失败，直接使用原始URL
+    window.open(resource.url, '_blank', 'noopener,noreferrer')
+  }
+}
+
+const goToResourceDetail = (device: Device, resource: Resource) => {
+  router.push({
+    name: 'AndroidDeviceDetail',
+    params: {
+      deviceId: device.id,
+      resourceType: resource.type
+    }
+  })
+}
+
+// 初始化数据
+onMounted(async () => {
+  await Promise.all([
+    fetchDeviceTypes(),
+    fetchDevices()
+  ])
+})
 </script>
